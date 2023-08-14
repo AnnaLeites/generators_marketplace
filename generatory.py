@@ -37,6 +37,3 @@ if col1.button("Сгенерировать продуктовую карточк
     col2.write(description)
 else:
     col2.write('Здесь будет карточка')
-#col1.image(zebra)
-
-#def generating_image("zebra"):

@@ -22,8 +22,6 @@ def generateExplanationText(prompt):
     )
     return completion.choices[0].text
 
- 
-
 
 col1, col2 = st.columns(2)
 

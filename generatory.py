@@ -1,7 +1,7 @@
 import streamlit as st
 import openai
 
-openai.api_key = "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"
+openai.api_key = "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"
 
 st.title('Создание новой продуктовой карточки')
 
@@ -23,14 +23,28 @@ def generateExplanationText(prompt):
     return completion.choices[0].text
 
  
-image_url = createImageWithGPT("Кроссовки белые женские спортивные 1 штука")
-image_prompt = "Кроссовки белые женские спортивные JOYCITY"
 
-description = generateExplanationText(image_prompt)
 
 col1, col2 = st.columns(2)
 
 col1.write("Проведённая аналитика показала, что параметрами влияющими на продажи являются наименование, бренд, цена, отзывы  и пол(мужская/женская обувь).")
+
+
+title = col1.text_input('Наименование продукта ', 'Введите наименование продукта ')
+brand = col1.text_input('Бренд', 'Введите название  бренда')
+color = col1.text_input('Цвет' , 'Введите цвет')
+
+gender = col1.radio(
+        "Обувь",
+        key="gender",
+        options=["мужская","женская" ],)
+
+
+image_prompt = title+" "+color+" "+brand+ " "+gender+" "+"на белом фоне"
+image_url = createImageWithGPT(image_prompt)
+
+text_prompt = title+" "+brand+" "+gender+" "+"Напиши наиболее продаваемое описание"
+description = generateExplanationText(text_prompt)
 
 if col1.button("Сгенерировать продуктовую карточку"):
     col2.image(image_url)

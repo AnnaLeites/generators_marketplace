@@ -1,7 +1,7 @@
 import streamlit as st
 import openai
 
-openai.api_key = "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"
+openai.api_key = KEY
 
 st.title('Создание новой продуктовой карточки')
 
